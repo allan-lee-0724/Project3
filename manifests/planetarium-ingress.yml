@@ -22,3 +22,11 @@ spec:
                 name: planetarium-clusterip 
                 port:
                   number: 80
+          - path: /alerts
+            pathType: Exact
+            backend:
+              service:
+                name: alertmanager
+                port:
+                  number: 80
+    

@@ -6,14 +6,15 @@ metadata:
     prometheus: socks-shop
     role: alert-rules
     release: prometheus
-  name: prometheus-prometheus-rules
+  name: prometheus-rules
 spec:
   groups:
-  - name: alerts
+  - name: ApplicationAlerts
     rules:
 
     - alert: AppDown
-      expr: up{job="planetarium-app"} == 0
+      # expr: up{job="planetarium-app"} == 0
+      expr: up == 0
       for: 5m
       labels:
         severity: warn
@@ -22,7 +23,8 @@ spec:
         description: "Planetarium is not running"
 
     - alert: AppDownOvertime
-      expr: up{job="planetarium-app"} == 0
+      # expr: up{job="planetarium-app"} == 0
+      expr: up == 0
       for: 30m
       labels:
         severity: critical
@@ -93,3 +95,33 @@ spec:
       annotations:
         summary: "60-MINUTE ERROR RATE HIGHER THAN EXPECTED"
         description: "Planetarium is reporting too many 500 status codes in the past 1 hour"
+  
+  - name: ServiceMonitor
+    rules: 
+    - alert: HighMemoryUsage 
+      expr: node_memory_MemFree_bytes / node_memory_MemTotal_bytes > 0.8 
+      annotations: 
+        summary: "High memory usage on {{ $labels.instance }}" 
+        description: "{{ $labels.instance }} has a memory usage of {{ $value }}%" 
+      labels: 
+        severity: warning 
+
+    - alert: HighCPUUsage 
+      expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80 
+      annotations: 
+        summary: "High CPU usage on {{ $labels.instance }}" 
+        description: "{{ $labels.instance }} has a CPU usage of {{ $value }}%" 
+      labels: 
+        severity: warning 
+
+    - alert: LowFileSpace 
+      expr: node_filesystem_free_bytes / node_filesystem_size_bytes < 0.1 
+      annotations: 
+        summary: "Low file space on {{ $labels.instance }}" 
+
+    - alert: PodsResetting 
+      expr: increase(kube_pod_container_status_restarts_total[1h]) > 3 
+      annotations: 
+        summary: "Pods are resetting too often" 
+      labels: 
+        severity: warning
