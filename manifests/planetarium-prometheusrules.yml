@@ -1,0 +1,95 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  creationTimestamp: null
+  labels:
+    prometheus: socks-shop
+    role: alert-rules
+    release: prometheus
+  name: prometheus-prometheus-rules
+spec:
+  groups:
+  - name: alerts
+    rules:
+
+    - alert: AppDown
+      expr: up{job="planetarium-app"} == 0
+      for: 5m
+      labels:
+        severity: warn
+      annotations:
+        summary: "APPLICATION IS CURRENTLY DOWN"
+        description: "Planetarium is not running"
+
+    - alert: AppDownOvertime
+      expr: up{job="planetarium-app"} == 0
+      for: 30m
+      labels:
+        severity: critical
+      annotations:
+        summary: "APPLICATION IS CRITICALLY DOWN"
+        description: "Planetarium has been down for over 30 minutes"
+
+    - alert: APIHighLatency:5min
+      expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[5m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[5m])) > 0.2
+      labels:
+        severity: warn
+      annotations:
+        summary: "5-MINUTE LATENCY HIGHER THAN EXPECTED"
+        description: "Planetarium is taking too long to handle requests in the past 5 minutes"
+
+    - alert: APIHighLatency:15min
+      expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[15m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[15m])) > 0.2
+      labels:
+        severity: warn
+      annotations:
+        summary: "10-MINUTE LATENCY HIGHER THAN EXPECTED"
+        description: "Planetarium is taking too long to handle requests in the past 10 minutes"
+
+    - alert: APIHighLatency:30min
+      expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[30m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[30m])) > 0.2
+      labels:
+        severity: warn
+      annotations:
+        summary: "30-MINUTE LATENCY HIGHER THAN EXPECTED"
+        description: "Planetarium is taking too long to handle requests in the past 30 minutes"
+
+    - alert: APIHighLatency:1h
+      expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[1h])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[1h])) > 0.2
+      labels:
+        severity: warn
+      annotations:
+        summary: "60-MINUTE LATENCY HIGHER THAN EXPECTED"
+        description: "Planetarium is taking too long to handle requests in the past 1 hour"
+
+    - alert: APILowSuccessRate:5m
+      expr: sum(rate(http_server_requests_seconds_count{job="planetarium-app", status!="500"}[5m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[5m])) < 0.998
+      labels:
+        severity: warn
+      annotations:
+        summary: "5-MINUTE ERROR RATE HIGHER THAN EXPECTED"
+        description: "Planetarium is reporting too many 500 status codes in the past 5 minutes"
+
+    - alert: APILowSuccessRate:15m
+      expr: sum(rate(http_server_requests_seconds_count{job="planetarium-app", status!="500"}[15m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[15m])) < 0.998
+      labels:
+        severity: warn
+      annotations:
+        summary: "15-MINUTE ERROR RATE HIGHER THAN EXPECTED"
+        description: "Planetarium is reporting too many 500 status codes in the past 15 minutes"
+
+    - alert: APILowSuccessRate:30m
+      expr: sum(rate(http_server_requests_seconds_count{job="planetarium-app", status!="500"}[30m])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[30m])) < 0.998
+      labels:
+        severity: warn
+      annotations:
+        summary: "30-MINUTE ERROR RATE HIGHER THAN EXPECTED"
+        description: "Planetarium is reporting too many 500 status codes in the past 30 minutes"
+
+    - alert: APILowSuccessRate:1h
+      expr: sum(rate(http_server_requests_seconds_count{job="planetarium-app", status!="500"}[1h])) / sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[1h])) < 0.998
+      labels:
+        severity: warn
+      annotations:
+        summary: "60-MINUTE ERROR RATE HIGHER THAN EXPECTED"
+        description: "Planetarium is reporting too many 500 status codes in the past 1 hour"

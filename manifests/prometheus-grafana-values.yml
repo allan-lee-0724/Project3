@@ -1,0 +1,36 @@
+prometheus:
+  prometheusSpec: 
+    serviceAccountName: prometheus
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: 
+      matchLabels:
+          release: prometheus
+    podMonitorSelector: {}
+    additionalScrapeConfigs:
+      name: additional-scrape-configs
+      key: prometheus-additional-job.yaml
+    resources:
+      requests:
+        memory: 400Mi
+    enableAdminAPI: false
+    alerting:
+      alertmanagers:
+      - namespace: default
+        name: alertmanager-operated
+        port: web
+    ruleSelector:
+      matchLabels:
+        role: alert-rules
+        prometheus: socks-shop
+      
+grafana:
+  namespaceOverride: "default"
+  grafana.ini:
+    server:
+      serve_from_sub_path: "true"
+      root_url: "%(protocol)s://%(domain)s:/grafana/" 
+
+  ingress:
+    enabled: true
+    path: /grafana
+    ingressClassName: nginx
