@@ -1,27 +1,29 @@
-config:
-  route:
-    receiver: pager
-    group_by: ['alertname']
-    group_wait: 10s
-    group_interval: 10s
-    repeat_interval: 4h
-    routes:
-      - receiver: email
-        match:
-          alertname: AppDown
-        group_wait: 30s
-        group_interval: 5m
-        repeat_interval: 12h  
-  receivers:
-    - name: email
-      email_configs:
-        - to: 'allan841@revature.net'
-          from: 'sreteamkuberknights@gmail.com'
-          smarthost: smtp.gmail.com:587
-          auth_username: 'sreteamkuberknights@gmail.com'
-          auth_identity: 'sreteamkuberknights@gmail.com'
-          auth_password: 'Kuberknights#1'
-ingress:
-  enabled: true
-  path: /alertmanager
-  ingressClassName: nginx
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'email'
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 10s
+  repeat_interval: 10s
+  receiver: 'email'
+
+  routes:
+  - match:
+      alertname: Watchdog
+      receiver: 'null'
+  - match:
+      alertname: AppDown
+      receiver: 'email'
+      continue: true
+
+receivers:
+- name: email
+  email_configs:
+  - to: 'allan841@revature.net'
+    from: 'sreteamkuberknights@gmail.com'
+    smarthost: smtp.gmail.com:587
+    auth_username: 'sreteamkuberknights@gmail.com'
+    auth_identity: 'sreteamkuberknights@gmail.com'
+    auth_password: 'Kuberknights#1'
