@@ -28,3 +28,24 @@
 - Problem Tracking: 
     - Prometheus can collect metrics on node performance and health, including CPU and memory utilization, and detect cascading failures as a result of these metrics. 
     - Grafana can be used in conjunction with Prometheus to visualize the metrics collected and provide a visual representation of the health of the cluster, including any cascading failures. 
+
+### Scrum standup Feb 6, 2023
+- DONE: (+2)
+    - Created user stories
+    - Performed research
+    - (+) Create a service monitor
+    - (+) Create an alert manager
+- CURRENT SPRINT: (+/- 2)
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- IN PROGRESS: (+/- 2)
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- ON HOLD: (-2)
+    - Sensitive information and monitoring tools sould be stored and referenced as secrets
+    - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
+- NEXT UP: (-1/+2)
+    - (+) Modify Prometheus rules file and change the rules
+    - (+) Test the rules
+- QUESTIONS
+    - Recording rules vs. Alerting rules
