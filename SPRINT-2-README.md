@@ -72,7 +72,7 @@
 - QUESTIONS (-3)
     - CLEAR :-)
 
-### Scrum standup Feb 7, 2023
+### Scrum standup Feb 8, 2023
 - DONE: (+1)
     - Created user stories
     - Performed research
