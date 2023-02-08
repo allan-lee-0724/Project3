@@ -39,8 +39,8 @@
     - Multi-window multi-burn rate prometheus alert
     - Monitoring tools and planetarium pods are hosted on separate nodes
 - IN PROGRESS: (+/- 2)
-    - Multi-window multi-burn rate prometheus alert
-    - Monitoring tools and planetarium pods are hosted on separate nodes
+    - (+) Multi-window multi-burn rate prometheus alert
+    - (+) Monitoring tools and planetarium pods are hosted on separate nodes
 - ON HOLD: (-2)
     - Sensitive information and monitoring tools sould be stored and referenced as secrets
     - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
@@ -49,3 +49,45 @@
     - (+) Test the rules
 - QUESTIONS
     - Recording rules vs. Alerting rules
+    - Tolerations vs. taints
+    - 6h burn rate always firing???
+
+### Scrum standup Feb 7, 2023
+- DONE: 
+    - Created user stories
+    - Performed research
+    - Create a service monitor
+    - Create an alert manager
+- CURRENT SPRINT: 
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- IN PROGRESS: 
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- ON HOLD: 
+    - Sensitive information and monitoring tools sould be stored and referenced as secrets
+    - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
+- NEXT UP: (+1/-2)
+    - Update tolerations and taints
+- QUESTIONS (-3)
+    - CLEAR :-)
+
+### Scrum standup Feb 7, 2023
+- DONE: (+1)
+    - Created user stories
+    - Performed research
+    - Create a service monitor
+    - Create an alert manager
+    - (+) Multi-window multi-burn rate prometheus alert
+- CURRENT SPRINT: 
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- IN PROGRESS: (-1)
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- ON HOLD: 
+    - Sensitive information and monitoring tools sould be stored and referenced as secrets
+    - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
+- NEXT UP: 
+    - Update tolerations and taints
+- QUESTIONS 
+    - CLEAR :-)

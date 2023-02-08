@@ -215,20 +215,20 @@ spec:
       labels: 
         severity: critical
 
-    - alert: LatencyBurnRate(6hr-3d)
-      expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[6h])) 
-            /
-            sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[6h])) 
-            >
-            1 * 0.001
-            and
-            sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[3d])) 
-            /
-            sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[3d]))
-            >
-            1 * 0.001
-      annotations: 
-          summary: "Latency too long in both 5-minute range and 1-hour range. Error budget consumption > 2%" 
-      labels: 
-        severity: critical
+    # - alert: LatencyBurnRate(6hr-3d)
+    #   expr: sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[6h])) 
+    #         /
+    #         sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[6h])) 
+    #         >
+    #         1 * 0.001
+    #         and
+    #         sum(rate(http_server_requests_seconds_sum{job="planetarium-app"}[3d])) 
+    #         /
+    #         sum(rate(http_server_requests_seconds_count{job="planetarium-app"}[3d]))
+    #         >
+    #         1 * 0.001
+    #   annotations: 
+    #       summary: "Latency too long in both 5-minute range and 1-hour range. Error budget consumption > 2%" 
+    #   labels: 
+    #     severity: critical
 

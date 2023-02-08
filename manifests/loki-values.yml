@@ -1,0 +1,16 @@
+loki:
+  tolerations:
+    - key: "monitoring"
+      operator: "Equal"
+      value: "true"
+      effect: "NoExecute"
+promtail:
+  tolerations:
+    - key: "monitoring"
+      operator: "Equal"
+      value: "true"
+      effect: "NoExecute"
+    - key: "application"
+      operator: "Equal"
+      value: "true"
+      effect: "NoExecute"

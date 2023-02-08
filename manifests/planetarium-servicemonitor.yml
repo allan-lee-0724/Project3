@@ -13,3 +13,9 @@ spec:
   - port: http
     path: /actuator/prometheus
     interval: 10s
+
+  # tolerations:
+  #   - key: "monitoring"
+  #     operator: "Equal"
+  #     value: "true"
+  #     effect: "NoSchedule"

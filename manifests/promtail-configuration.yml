@@ -22,3 +22,9 @@ data:
               app: planetarium
               __path__: /logs/*.log
               namespace: default
+# tolerations:
+#     - key: "monitoring"
+#       operator: "Equal"
+#       value: "true"
+#       effect: "NoSchedule"
+

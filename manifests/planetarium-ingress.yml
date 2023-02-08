@@ -29,4 +29,9 @@ spec:
           #       name: alertmanager
           #       port:
           #         number: 80
-    
+
+  # tolerations:
+  #   - key: "monitoring"
+  #     operator: "Equal"
+  #     value: "true"
+  #     effect: "NoSchedule"

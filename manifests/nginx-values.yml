@@ -1,0 +1,6 @@
+controller:
+  tolerations:
+    - key: "monitoring"
+      operator: "Equal"
+      value: "true"
+      effect: "NoExecute"

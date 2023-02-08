@@ -44,4 +44,4 @@ application.properties
 *.log
 
 planetarium-deployment.yml
-secrets.yml
+secrets.yaml
