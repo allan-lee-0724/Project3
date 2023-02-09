@@ -91,3 +91,26 @@
     - Update tolerations and taints
 - QUESTIONS 
     - CLEAR :-)
+
+### Scrum standup Feb 9, 2023
+- DONE: (+1)
+    - Created user stories
+    - Performed research
+    - Create a service monitor
+    - Create an alert manager
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- CURRENT SPRINT: 
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- IN PROGRESS: (-1)
+    - CLEAR :-)
+- ON HOLD: (+2)
+    - Sensitive information and monitoring tools sould be stored and referenced as secrets
+    - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
+    - (+) Jenkins pipeline automation
+    - (+) Terraform EKS setup
+- NEXT UP: 
+    - Monitor and maintain
+- QUESTIONS 
+    - Prometheus data source is down on grafana after pod separation...
