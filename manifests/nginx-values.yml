@@ -3,4 +3,4 @@ controller:
     - key: "monitoring"
       operator: "Equal"
       value: "true"
-      effect: "NoExecute"
+      effect: "NoSchedule"

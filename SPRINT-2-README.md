@@ -1,4 +1,4 @@
-# Week 1 Sprint
+# Week 2 Sprint
 ## Epics:
 1. Prometheus should be configured to alert using a multi-window multi-burn rate strategy for relevant SLIs 
 2. Epic 2: Planetarium Cluster should be configured so monitoring tools and planetarium pods are hosted on separate nodes, ensuring that any cascading failures on the planetarium nodes do not hinder the monitoring tools, and vice versa 
@@ -114,3 +114,44 @@
     - Monitor and maintain
 - QUESTIONS 
     - Prometheus data source is down on grafana after pod separation...
+
+### Scrum standup Feb 10, 2023
+- DONE: 
+    - Created user stories
+    - Performed research
+    - Create a service monitor
+    - Create an alert manager
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- CURRENT SPRINT: 
+    - Multi-window multi-burn rate prometheus alert
+    - Monitoring tools and planetarium pods are hosted on separate nodes
+- IN PROGRESS: 
+    - CLEAR :-)
+- ON HOLD: 
+    - Sensitive information and monitoring tools sould be stored and referenced as secrets
+    - Data saved by Prometheus and Loki should be stored outside of the cluster in a persistent volume
+    - Jenkins pipeline automation
+    - Terraform EKS setup
+- NEXT UP: 
+    - Monitor and maintain
+- QUESTIONS (-1)
+    - CLEAR :-)
+- IMPORTANT LESSON LEARNED:
+    - DO NOT USE NOEXECUTE WHEN SETTING UP TOLERATION. DATA SOURCES ARE NOT PROPERLY INTEGRATED INTO GRAFANA UNLESS TOLERATION USES NOSCHEDULE SETUP
+
+## Retrospective
+- What went well? 
+    - All epics were completed pretty efficiently
+    - Well-maintained overall communication flow and collaborations
+        - We knew what to do for the day and what to expect for the next day 
+        - Constant exchange of ideas  
+        - Structured workflow: P3 AM -> Interview Prep PM
+        - Pair programming
+- What could have been better? 
+    - We could add more features to our final project
+- What will we do differently? 
+    - We should monitor our cluster more closely to discover issues on time
+- Action items 
+    - Preping for interview
+    - Preping for showcase

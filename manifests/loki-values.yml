@@ -3,14 +3,14 @@ loki:
     - key: "monitoring"
       operator: "Equal"
       value: "true"
-      effect: "NoExecute"
+      effect: "NoSchedule"
 promtail:
   tolerations:
     - key: "monitoring"
       operator: "Equal"
       value: "true"
-      effect: "NoExecute"
+      effect: "NoSchedule"
     - key: "application"
       operator: "Equal"
       value: "true"
-      effect: "NoExecute"
+      effect: "NoSchedule"

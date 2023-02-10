@@ -2,13 +2,13 @@ tolerations:
 - key: "monitoring"
   operator: "Equal"
   value: "true"
-  effect: "NoExecute"
+  effect: "NoSchedule"
 controller:
   tolerations:
   - key: "monitoring"
     operator: "Equal"
     value: "true"
-    effect: "NoExecute"
+    effect: "NoSchedule"
   installPlugins:
   - kubernetes
   - workflow-aggregator
@@ -32,6 +32,11 @@ controller:
     ingressClassName: nginx
     path: "/jenkins"
 agent:
+  tolerations:
+  - key: "monitoring"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
   podTemplates:
     devops: |
         - name: devops
@@ -41,3 +46,8 @@ agent:
           - name: docker
             image: docker:18-dind
             privileged: true
+          tolerations:
+          - key: "monitoring"
+            operator: "Equal"
+            value: "true"
+            effect: "NoSchedule"
