@@ -45,4 +45,4 @@ application.properties
 
 planetarium-deployment.yml
 secrets.yaml
-manifests/prometheus-grafana-values.yml
+prometheus-grafana-values.yml
